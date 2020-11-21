@@ -4,7 +4,8 @@ type LayoutProps = {
   children: JSX.Element
 }
 
-const variable = 'variable';
+const variable = 'dupa';
+const variable1 = 'dupa1';
 
 const Layout = ({ children }: LayoutProps) => {
 
