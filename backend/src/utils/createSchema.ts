@@ -8,7 +8,7 @@ import { ChangePasswordResolver } from "../modules/user/resolvers/changePassword
 import { LogoutResolver } from "../modules/user/resolvers/logout";
 import { MeResolver } from "../modules/user/resolvers/me";
 import { OffersResolver } from "../modules/offers/resolvers/offers";
-import { HelloResolver } from "../modules/hello/hello";
+import { HelloResolver } from '../modules/hello/hello';
 
 export const createSchema = () => buildSchema({
   resolvers: [

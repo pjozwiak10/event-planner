@@ -6,6 +6,7 @@ import { createConnection } from "typeorm";
 import session from 'express-session';
 import connectRedis from 'connect-redis';
 import path from 'path';
+import cors from 'cors';
 
 import { createSchema } from './utils/createSchema';
 import { redis } from './redis';
@@ -29,6 +30,12 @@ const startServer = async () => {
   const app = express();
   const RedisStore = connectRedis(session);
   app.use(
+    cors({
+      origin: 'http://localhost:3000',
+      credentials: true,
+    })
+  );
+  app.use(
     session({
       name: COOKIE_SESSION_NAME,
       store: new RedisStore({
@@ -47,7 +54,7 @@ const startServer = async () => {
     })
   )
   app.use(express.static(path.join(__dirname, '../public')));
-  server.applyMiddleware({ app });
+  server.applyMiddleware({ app, cors: false });
 
   app.listen(process.env.PORT, () =>
     console.log(`Server ready at http://localhost:${process.env.PORT}${server.graphqlPath}`)
