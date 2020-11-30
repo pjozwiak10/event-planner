@@ -44,7 +44,7 @@ const getOffersView = (category: number) => {
 const createSqlFilters = (filters: FilterObject[]) => {
   const sqlFilters = filters.map(filter => {
     const attributePrefix = +filter.filterType === 1 ? 'general' : 'specific'
-    return (`${attributePrefix}_attribute_value = ${filter.filterValue}::int 
+    return (`${attributePrefix}_attribute_value = ${filter.filterValue}::int
     AND ${(() => {
         switch (filter.filterCharacter) {
           case 'text':

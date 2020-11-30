@@ -15,12 +15,7 @@ const Layout = ({ children }: LayoutProps) => {
       </div>
       {children}
       <div className="footer">
-        <p>footerk</p>
-        <p>footerk</p>
-        <p>footerk</p>
-        <p>footerk</p>
-        <p>footerk</p>
-        <p>footerk</p>
+        <p>footerek</p> 
       </div>
     </div>
   )

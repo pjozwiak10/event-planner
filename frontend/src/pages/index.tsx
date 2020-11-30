@@ -2,7 +2,7 @@ import React from 'react';
 import { HelloDocument } from '../generated/graphql';
 import { initializeApollo } from '../lib/apolloClient';
 
-const Home = (props) => {
+const Home = (props: any) => {
   console.log(props);
   return (
     <>

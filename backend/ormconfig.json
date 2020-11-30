@@ -3,7 +3,7 @@
    "host": "localhost",
    "port": 5432,
    "username": "postgres",
-   "password": "postgres",
+   "password": "1234",
    "database": "event-planner",
    "logging": true,
    "synchronize": true,
