@@ -1,24 +1,29 @@
 import React from 'react';
-import Link from 'next/link';
+import { AnimatePresence } from "framer-motion";
+import { StyledLayout } from './style';
+import PageTransition from './page-transition/PageTransition';
+import Header from '../header/Header';
+import { GlobalStyle } from '../global/GlobalStyle';
+import Router from 'next/dist/next-server/lib/router/router';
 
 type LayoutProps = {
-  children: JSX.Element
+  children: JSX.Element,
+  router: Router,
 }
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children, router }: LayoutProps) => {
 
   return (
-    <div className="container">
-      <div className="header">
-        <Link href="/"><a>home</a></Link>
-        <Link href="/about"><a>about</a></Link>
-      </div>
-      {children}
-      <div className="footer">
-        <p>footerek</p> 
-      </div>
-    </div>
+    <StyledLayout className="layout">
+      <GlobalStyle />
+      <Header />
+      <AnimatePresence exitBeforeEnter>
+        <PageTransition key={router.route}>
+          {children}
+        </PageTransition>
+      </AnimatePresence>
+    </StyledLayout>
   )
 }
 
-export default Layout;
+export default Layout
