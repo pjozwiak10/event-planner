@@ -1,4 +1,11 @@
 import styled from 'styled-components';
+import {media} from '../../utils/media';
+
+export const Wrapperwrappper = styled.div`
+    
+
+`;
+
 
 export const Wrapper = styled.div`
 
@@ -8,6 +15,21 @@ export const Wrapper = styled.div`
     flex-direction: column;
     justify-content: start;
     padding-top: 5rem;
+    backdrop-filter: saturate(180%) blur(120px);
+    z-index: -1;
+    box-shadow: 10px 10px 103px -31px rgba(0,0,0,0.75);
+    padding: 4rem 2rem 0 2rem;
+
+    ${media.laptop}{
+        display: flex;
+        max-width: 50%;
+        border: 1px solid #ccc;
+        max-height: 62.3vw; 
+        border-radius: 4rem;
+        padding: 4rem;
+        flex: 1 1 50%;
+        margin: 11rem 6rem;
+    }
 
     h3, h4{
         max-width: 17rem;
@@ -171,12 +193,12 @@ export const SocialMedia = styled.div`
    
     .socialmedia-item{
         border: 0.1px solid #ccc;
-        padding: 2rem;
+        padding: 1rem;
         border-radius: 5rem;
         cursor: pointer;
         background-color: #fff;
         transition: 0.5s all;
-
+        max-width: 8rem;
 
         &:hover{
             background-color: #f1f1f1;

@@ -10,7 +10,7 @@ export const SvgTopStyle = styled.div`
     z-index: -1;
 
     ${media.laptop}{
-        top: -69rem;
+        top: calc(37rem - 100vw);
     }
 `
 
@@ -22,7 +22,7 @@ export const SvgDownStyle = styled.div`
     z-index: -2;
 
     ${media.laptop}{
-        top: 92rem;
+        top: calc(26rem - 100vw);
     }
 
 `

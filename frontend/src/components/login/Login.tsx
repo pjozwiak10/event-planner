@@ -16,6 +16,7 @@ export default function Login() {
     return (
         <>
             <Wrapper>
+            
                 <h4>Zaloguj się </h4>
                 <Form onSubmit={handleSubmit(onSubmit)}>
 
@@ -61,16 +62,23 @@ export default function Login() {
 
                     <SocialMedia>
                         <div className="socialmedia-item">
-                            <img src="images/logo/logo.svg" />
+                            <img src="images/socialmedia/google-logo.png" />
                         </div>
                         <div className="socialmedia-item">
-                            <img src="images/logo/logo.svg" />
+                            <img src="images/socialmedia/twitter-logo.png" />
                         </div>
                         <div className="socialmedia-item">
-                            <img src="images/logo/logo.svg" />
+                            <img src="images/socialmedia/facebook-logo.png" />
                         </div>
                     </SocialMedia>
                 </Form>
+            </Wrapper>
+            <Wrapper>
+                <Form>
+                    <p>Wejdź i sprawdź największą bazę organizatorów imprez</p>
+                    <img src="images/socialmedia/illustration-login.png" alt=""/>
+                </Form>
+    
             </Wrapper>
         </>
     )
