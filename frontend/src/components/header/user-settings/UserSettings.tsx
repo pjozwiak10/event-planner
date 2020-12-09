@@ -17,7 +17,7 @@ const UserSettings = () => {
       </button>
       <Media greaterThanOrEqual={'laptop'} className="user-settings__account-desktop">
         {user ?
-          <Link href="/myaccount"><a className="user-settings__account-link">
+          <Link href="/mojekonto"><a className="user-settings__account-link">
             <StyledUserIcon />
             <span className="user-settings__user">{user}</span>
           </a></Link>

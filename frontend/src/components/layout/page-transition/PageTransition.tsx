@@ -11,8 +11,8 @@ const contentVariants = {
 }
 
 const contentTransition = {
+  duration: 0.5,
   type: 'tween',
-  ease: 'anticipate',
 }
 
 const PageTransition = ({ children }: PageTransitionProps) => {

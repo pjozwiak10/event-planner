@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { media } from "../../utils/media";
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -10,14 +11,13 @@ export const GlobalStyle = createGlobalStyle`
   html {
     font-size: 10px;
     font-family: 'Source Sans Pro', arial, sans-serif;
-    color: ${props => props.theme.primaryColor};
+    color: ${props => props.theme.textColor};
   }
 
   body {
     overflow-x: hidden;
     padding: 0 1.5rem;
     background: ${props => props.theme.pageBackgroundColor};
-    background: #aaa;
   }
 
   ul {
@@ -41,7 +41,21 @@ export const GlobalStyle = createGlobalStyle`
   a {
     display: block;
     text-decoration: none;
-    color: ${props => props.theme.primaryColor}
+    color: ${props => props.theme.primaryColor};
+    ${media.laptop} {
+      transition: 0.4s;
+      &:hover {
+        color: ${props => props.theme.secondaryColor};
+      }
+    }
+  }
+
+  i {
+    background: ${props => props.theme.primaryColor};
+    background-clip: text;
+    background: ${props => `linear-gradient(to bottom, ${props.theme.primaryColor} 0%, ${props.theme.secondaryColor} 100%)`};
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   img {
@@ -65,4 +79,4 @@ export const GlobalStyle = createGlobalStyle`
   font-style: normal;
   font-weight: normal;
   }
-`
+`;

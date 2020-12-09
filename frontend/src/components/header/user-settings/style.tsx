@@ -2,17 +2,18 @@ import styled from "styled-components";
 import { media } from "../../../utils/media";
 
 export const StyledUserSettings = styled.div`
-  display: flex;
-  align-items: center;
-  width: 50%;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  justify-items: center;
+  width: 100%;
   ${media.laptop} {
     width: auto;
+    grid-template-columns: repeat(3,auto);
   }
   .user-settings {
     &__notification-button, &__wishlist-button {
       font-size: 2.5rem;
       color: ${props => props.theme.primaryColor};
-      width: 33.333%;
       ${media.laptop} {
         margin: 0 2rem 0 0;
         width: auto;
@@ -26,7 +27,6 @@ export const StyledUserSettings = styled.div`
       }
     }
     &__account-mobile {
-      width: 33.333%;
       ${media.laptop} {
         display: none;
       }

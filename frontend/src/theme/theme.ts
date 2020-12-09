@@ -5,23 +5,27 @@ declare module 'styled-components' {
     pageBackgroundColor: string;
     backgroundColor: string;
     buttonBackgroundColor: string;
-    buttonTextColor: string;
     gradientButtonBackgroundColor: string;
+    buttonTextColor: string;
     buttonBackgroundColorHover: string;
     buttonTextColorHover: string;
+    textColor: string;
     primaryColor: string;
     secondaryColor: string;
+    thirdColor: string;
   }
 }
 
 export const theme: DefaultTheme = {
   pageBackgroundColor: '#FBF3F1',
   backgroundColor: '#fff',
-  buttonBackgroundColor: '#3c3f48',
+  buttonBackgroundColor: '#680747',
+  gradientButtonBackgroundColor: '#c3195d',
   buttonTextColor: '#fff',
-  gradientButtonBackgroundColor: '#525764',
   buttonBackgroundColorHover: '#fff',
-  buttonTextColorHover: '#3c3f48',
-  primaryColor: '#242424',
-  secondaryColor: '#f3ce92',
+  buttonTextColorHover: '#680747',
+  textColor: '#141010',
+  primaryColor: '#680747',
+  secondaryColor: '#c3195d',
+  thirdColor: '#f70776',
 }

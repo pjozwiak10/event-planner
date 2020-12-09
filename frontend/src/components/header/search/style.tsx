@@ -6,7 +6,6 @@ export const StyledSearch = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 16.666%;
   ${media.laptop} {
     padding: 0 1.5rem 0 0;
     margin: 0 2rem 0 auto;
