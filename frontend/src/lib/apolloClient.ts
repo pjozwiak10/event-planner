@@ -10,7 +10,13 @@ const createApolloClient = () => {
       uri: 'http://localhost:5000/graphql',
       credentials: 'include',
     }),
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({
+      typePolicies: {
+        User:{
+          keyFields: ['id']
+        }
+      }
+    }),
   });
 }
 

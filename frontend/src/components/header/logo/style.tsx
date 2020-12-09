@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { media } from "../../../utils/media";
 
 export const StyledLogo = styled.div`
-  width: 16.667%;
   ${media.laptop} {
     margin: 0 4rem 0 0;
     width: 60px;

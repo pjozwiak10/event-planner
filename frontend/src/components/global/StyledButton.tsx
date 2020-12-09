@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { media } from "../../utils/media";
 
 export const StyledButton = styled.button`
   position: relative;
@@ -10,7 +11,6 @@ export const StyledButton = styled.button`
   color: ${props => props.theme.buttonTextColor};
   cursor: pointer;
   border-radius: 1rem;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.4s;
   z-index: 1;
   &::before {
@@ -18,18 +18,34 @@ export const StyledButton = styled.button`
     position: absolute;
     top:0;
     left:0;
-    right:0;
-    bottom:0;
-    background: ${props => props.theme.buttonBackgroundColorHover};
-    opacity: 0;
-    transition: 0.4s;
+    width: 100%;
+    height: 100%;
+    background: ${props => props.theme.buttonBackgroundColor};
+    background: ${props => `linear-gradient(135deg, ${props.theme.buttonBackgroundColor} 0%, ${props.theme.gradientButtonBackgroundColor} 100%)`}; 
     z-index: -1;
-    border-radius: 0.9rem;
+    border-radius: 1rem;
+    filter: blur(10px);
+    transform: translateY(5px) scale(0.9);
   }
-  &:hover {
-    &::before {
-      opacity: 1;
+  ${media.laptop} {
+    &::after {
+      content:'';
+      position: absolute;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      background: ${props => props.theme.buttonBackgroundColorHover};
+      opacity: 0;
+      transition: 0.4s;
+      z-index: -1;
+      border-radius: 0.9rem;
     }
-    color: ${props => props.theme.buttonTextColorHover};
+    &:hover {
+      &::after {
+        opacity: 1;
+      }
+      color: ${props => props.theme.buttonTextColorHover};
+    }
   }
 `;

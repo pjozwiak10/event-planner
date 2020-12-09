@@ -2,27 +2,43 @@ import React from 'react';
 import {Label, Input, Wrapper, Underline, Button, ForgotLink, RegisterLink, Form, SocialMedia} from './style';
 import { useForm } from "react-hook-form"; 
 import { StyledLeftArrowIcon } from '../global/StyledIcons';
+import {StyledButton} from '../../components/global/StyledButton';
+import { useLoginMutation } from '../../generated/graphql';
  
-
 type Inputs = {
     email: string,
     password: string,
 };
 
 export default function Login() {
+
+    const [login,{data,loading,error}] = useLoginMutation();
+
+    // {update(cache,{data}){
+    //     cache.modify({
+    //         fields: {
+                
+    //         }
+    //     })
+    // }}
+
+
     const { register, handleSubmit, errors } = useForm<Inputs>();
-    const onSubmit = (data:Inputs) => console.log(data);
+
+    const onLogin = (data:Inputs) => {
+        login({variables:{data:data}})
+    } 
 
     return (
         <>
             <Wrapper>
             
                 <h4>Zaloguj się </h4>
-                <Form onSubmit={handleSubmit(onSubmit)}>
+                <Form onSubmit={handleSubmit(onLogin)}>
 
                     <div className="input-data">
                         <Input
-                            name="Email"
+                            name="email"
                             ref={register({
                                 required: true,
                                 pattern: {
@@ -55,9 +71,9 @@ export default function Login() {
 
                     <div className="wrapper_button">
                         <RegisterLink>Rejestracja</RegisterLink>
-                        <Button type="submit">
-                                <StyledLeftArrowIcon/>
-                        </Button>
+                        <StyledButton type="submit"> 
+                                    Zaloguj się 
+                        </StyledButton>
                     </div>
 
                     <SocialMedia>
