@@ -1,13 +1,13 @@
 import { MaxLength } from "class-validator";
-import { Arg, Ctx, Field, InputType, Mutation, ObjectType, Resolver } from "type-graphql";
+import { Args, ArgsType, Ctx, Field, Mutation, ObjectType, Resolver } from "type-graphql";
 import argon2 from 'argon2';
 
 import { User } from "../../../entities/User";
 import { MyContext } from "src/types";
 import { FieldMessage } from "../types";
 
-@InputType()
-class LoginInput {
+@ArgsType()
+class LoginArgs {
   @MaxLength(255)
   @Field()
   email: string;
@@ -30,7 +30,7 @@ class LoginResponse {
 export class LoginResolver {
   @Mutation(() => LoginResponse)
   async login(
-    @Arg('data') { email, password }: LoginInput,
+    @Args() { email, password }: LoginArgs,
     @Ctx() { req }: MyContext,
   ): Promise<LoginResponse> {
     const user = await User.findOne({ where: { email } });

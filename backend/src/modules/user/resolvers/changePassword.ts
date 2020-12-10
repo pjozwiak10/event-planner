@@ -1,4 +1,4 @@
-import { Ctx, Mutation, Resolver, InputType, Field, Arg } from "type-graphql";
+import { Ctx, Mutation, Resolver, Field, Args, ArgsType } from "type-graphql";
 import { Length } from "class-validator";
 import argon2 from 'argon2';
 
@@ -6,8 +6,8 @@ import { User } from "../../../entities/User";
 import { FieldMessage } from "../types";
 import { MyContext } from '../../../types'
 
-@InputType()
-class ChangePasswordInput {
+@ArgsType()
+class ChangePasswordArgs {
   @Length(5, 255)
   @Field()
   newPassword: string;
@@ -20,7 +20,7 @@ class ChangePasswordInput {
 export class ChangePasswordResolver {
   @Mutation(() => [FieldMessage])
   async changePassword(
-    @Arg('data') { newPassword, token }: ChangePasswordInput,
+    @Args() { newPassword, token }: ChangePasswordArgs,
     @Ctx() { redis }: MyContext,
   ): Promise<FieldMessage[]> {
     const userId = await redis.get(token);

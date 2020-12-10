@@ -1,14 +1,14 @@
 import argon2 from "argon2";
 import { IsEmail, Length } from "class-validator";
-import { Arg, Field, InputType, Mutation, Resolver } from "type-graphql";
+import { Args, ArgsType, Field, Mutation, Resolver } from "type-graphql";
 
 import { User } from "../../../entities/User";
 import { FieldMessage } from "../types";
 import { createConfirmUserLink } from '../../../utils/createConfirmUserLink';
 import { sendEmail } from "../../../utils/sendEmail";
 
-@InputType()
-class RegisterInput {
+@ArgsType()
+class RegisterArgs {
   @Length(5, 255)
   @Field()
   username: string;
@@ -27,7 +27,7 @@ class RegisterInput {
 export class RegisterResolver {
   @Mutation(() => [FieldMessage])
   async register(
-    @Arg('data') { email, password, username }: RegisterInput
+    @Args() { username, email, password }: RegisterArgs
   ): Promise<FieldMessage[]> {
 
     const usernameTaken = await User.findOne({ where: { username } });

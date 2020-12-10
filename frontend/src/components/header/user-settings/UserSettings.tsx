@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import React from 'react'
+import { useMeQuery } from '../../../generated/graphql';
 import { Media } from '../../../utils/createAppMedia';
 import { StyledBellIcon, StyledHeartIcon, StyledUserIcon } from '../../global/StyledIcons';
 import { StyledUserSettings } from './style';
 
-const user = 'mnowak10';
-
 const UserSettings = () => {
+  const { data } = useMeQuery();
+
   return (
     <StyledUserSettings className="user-settings">
       <button className="user-settings__wishlist-button">
@@ -16,10 +17,10 @@ const UserSettings = () => {
         <StyledBellIcon className="user-settings" />
       </button>
       <Media greaterThanOrEqual={'laptop'} className="user-settings__account-desktop">
-        {user ?
+        {data?.me.user ?
           <Link href="/mojekonto"><a className="user-settings__account-link">
             <StyledUserIcon />
-            <span className="user-settings__user">{user}</span>
+            <span className="user-settings__user">{data.me.user.username}</span>
           </a></Link>
           : <>
             <Link href="/konto?action=login"><a className="user-settings__account-link user-settings__account-link--login">Zaloguj się</a></Link>

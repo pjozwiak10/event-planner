@@ -1,4 +1,4 @@
-import { Arg, Field, InputType, Query, Resolver } from "type-graphql";
+import { Args, ArgsType, Field, InputType, Query, Resolver } from "type-graphql";
 import { getConnection } from "typeorm";
 import { OffersResponse } from "../types/types";
 
@@ -17,8 +17,8 @@ class FilterObject {
   filterValueValue: string[];
 }
 
-@InputType()
-class OffersInput {
+@ArgsType()
+class OffersArgs {
   @Field()
   category: string;
 
@@ -73,7 +73,7 @@ const createSqlFilters = (filters: FilterObject[]) => {
 export class OffersResolver {
   @Query(() => [OffersResponse])
   async offers(
-    @Arg('data') { category, filters }: OffersInput
+    @Args() { category, filters }: OffersArgs
   ): Promise<OffersResponse[]> {
     const offersView = getOffersView(+category);
     let sqlFilters = '';
